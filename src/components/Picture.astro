@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 ---
-=======
->>>>>>> main
-=======
----
->>>>>>> main
 import type { HTMLAttributes } from "astro/types";
 import {
   getCldImageUrl,
@@ -13,38 +6,18 @@ import {
 } from "astro-cloudinary/helpers";
 
 type CloudinaryFormat = "jxl" | "avif" | "webp";
-type CloudinaryBreakpoint =
-  | number
-  | {
-      width: number;
-    };
-type CloudinaryBreakpointSet =
-  | CloudinaryBreakpoint[]
-  | {
-      breakpoints: CloudinaryBreakpoint[];
-    };
+type CloudinaryBreakpoint = number | { width: number };
+type CloudinaryBreakpointSet = CloudinaryBreakpoint[] | { breakpoints: CloudinaryBreakpoint[] };
+
 type ImageAttrs = Omit<
   HTMLAttributes<"img">,
   "src" | "srcset" | "alt" | "width" | "height" | "sizes"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> main
 >;
+
 type Transformations = Omit<
   GetCldImageUrlOptions,
   "src" | "width" | "height" | "format"
 >;
-<<<<<<< HEAD
-=======
-> ;
-type Transformations = Omit<
-  GetCldImageUrlOptions,
-  "src" | "width" | "height" | "format"
-> ;
->>>>>>> main
-=======
->>>>>>> main
 
 type Props = {
   src: string;
@@ -52,15 +25,7 @@ type Props = {
   width: number;
   height: number;
   sizes: string;
-<<<<<<< HEAD
-<<<<<<< HEAD
   breakpoints: CloudinaryBreakpointSet | string;
-=======
-  breakpoints: CloudinaryBreakpointSet;
->>>>>>> main
-=======
-  breakpoints: CloudinaryBreakpointSet;
->>>>>>> main
   pictureClass?: string;
   transformations?: Transformations;
 } & ImageAttrs;
@@ -78,15 +43,7 @@ const {
   width,
   height,
   sizes,
-<<<<<<< HEAD
-<<<<<<< HEAD
   breakpoints: rawBreakpoints,
-=======
-  breakpoints,
->>>>>>> main
-=======
-  breakpoints,
->>>>>>> main
   pictureClass,
   transformations = {},
   loading = "lazy",
@@ -94,64 +51,31 @@ const {
   ...attrs
 } = Astro.props;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-// --- NEW LOGIC TO HANDLE MARKDOWN STRINGS ---
-let breakpoints = rawBreakpoints;
-if (typeof rawBreakpoints === 'string') {
-  breakpoints = rawBreakpoints.split(',').map(Number);
-}
+// --- HANDLE STRINGS (E.G. FROM MARKDOWN) OR OBJECTS ---
+let breakpointList: CloudinaryBreakpoint[] = [];
 
-const getBreakpointWidth = (breakpoint: any) =>
-  typeof breakpoint === "number" ? breakpoint : breakpoint.width;
-
-if (!breakpoints) {
+if (!rawBreakpoints) {
   throw new Error(
-    `Cloudinary breakpoints are missing or undefined for src: "${src}".`
+    `Cloudinary breakpoints are missing or undefined for src: "${src}". Please verify this key exists.`
   );
 }
 
-const breakpointList = Array.isArray(breakpoints)
-  ? breakpoints
-  : (breakpoints && 'breakpoints' in breakpoints ? breakpoints.breakpoints : undefined);
+if (typeof rawBreakpoints === 'string') {
+  breakpointList = rawBreakpoints.split(',').map(num => Number(num.trim()));
+} else if (Array.isArray(rawBreakpoints)) {
+  breakpointList = rawBreakpoints;
+} else if (typeof rawBreakpoints === 'object' && 'breakpoints' in rawBreakpoints) {
+  breakpointList = rawBreakpoints.breakpoints;
+}
 
-if (!breakpointList) {
+if (!breakpointList || breakpointList.length === 0) {
   throw new Error(`Could not find a valid array of breakpoints for src: "${src}".`);
 }
 
-=======
-=======
->>>>>>> main
 const getBreakpointWidth = (breakpoint: CloudinaryBreakpoint) =>
   typeof breakpoint === "number" ? breakpoint : breakpoint.width;
 
-// 1. First, make sure something was actually passed in
-  if (!breakpoints) {
-    throw new Error(
-      `Cloudinary breakpoints are missing or undefined for src: "${src}". Please verify this key exists in your JSON file.`
-    );
-  }
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> main
-  // 2. Safely extract the array whether it's a direct array or wrapped in an object
-  const breakpointList = Array.isArray(breakpoints)
-    ? breakpoints
-    : ('breakpoints' in breakpoints ? breakpoints.breakpoints : undefined);
-<<<<<<< HEAD
-
-  if (!breakpointList) {
-    throw new Error(`Could not find a valid array of breakpoints for src: "${src}".`);
-  }
->>>>>>> main
-=======
-  
-  if (!breakpointList) {
-    throw new Error(`Could not find a valid array of breakpoints for src: "${src}".`);
-  }
->>>>>>> main
+// Normalize, filter, and inject the original image width
 const normalizedBreakpoints = [
   ...new Set(
     breakpointList
@@ -163,15 +87,7 @@ const normalizedBreakpoints = [
 
 if (normalizedBreakpoints.length === 0) {
   throw new Error(
-<<<<<<< HEAD
-<<<<<<< HEAD
-    `Cloudinary breakpoints are required for ${src}.`
-=======
-    `Cloudinary breakpoints are required for ${src}. Run "npm run cloudinary:breakpoints ${src}" and pass the generated widths.`
->>>>>>> main
-=======
     `Cloudinary breakpoints are required for ${src}. Run "pnpm cloudinary:breakpoints ${src}" and pass the generated widths.`
->>>>>>> main
   );
 }
 
@@ -213,13 +129,4 @@ const fallbackSrc = createUrl("webp", width);
     loading={loading}
     decoding={decoding}
   />
-<<<<<<< HEAD
-<<<<<<< HEAD
 </picture>
-=======
-</picture>
->>>>>>> main
-=======
-</picture>
-
->>>>>>> main

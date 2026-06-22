@@ -3,11 +3,8 @@ import { getCollection } from "astro:content";
 const siteUrl = (
   import.meta.env.SITE_URL ||
   import.meta.env.PUBLIC_SITE_URL ||
-<<<<<<< HEAD
-  "https://quiet.paulapplegate.com"
-=======
-  "https://quiet_pages.paulapplegate.com"
->>>>>>> main
+  "https://quiet-please.paulapplegate.com"
+
 ).replace(/\/$/, "");
 
 export const authors = [

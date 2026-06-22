@@ -21,19 +21,13 @@ dist
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
-<<<<<<< HEAD
-<<<<<<< HEAD
-
+*.sw*
 *.env
 .env.local
 .env
-=======
 *.env
 .env.local
->>>>>>> main
-=======
+*.env.example
 *.env
 .env.local
 .env
->>>>>>> main

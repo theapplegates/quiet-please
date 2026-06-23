@@ -14,27 +14,6 @@ imageCredit:
   source: "Unsplash"
   sourceUrl: "https://unsplash.com/photos/j9sWBE4jeWQ?utm_source=quiet_pages&utm_medium=referral"
 ---
-<cloudinary-picture
-  src="assets/images/douglas-schneiders-UZ2jlHknQpc-unsplash"
-  alt="TODO: describe this image"
-  width="2000"
-  height="1500"
-  sizes="(min-width: 768px) 720px, 100vw"
-  breakpoints="200, 382, 527, 730, 1024, 2000"
-  picture-class="responsive-picture"
-/>
-
-
-<cloudinary-picture
-  src="assets/images/douglas-schneiders-UZ2jlHknQpc-unsplash"
-  alt="TODO: describe this image"
-  width="2000"
-  height="1500"
-  sizes="(min-width: 768px) 720px, 100vw"
-  breakpoints="200, 382, 527, 730, 1024, 2000"
-  picture-class="responsive-picture"
-/>
-
 
 <cloudinary-picture
   src="assets/images/david-becker-TIyafyo4TO0-unsplash"

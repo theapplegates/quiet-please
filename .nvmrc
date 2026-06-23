@@ -1,1 +1,13 @@
-22.13.0
+# 1. Create the .npmrc file so Vercel/CI knows to bypass the Astro 6 peer conflict
+printf "legacy-peer-deps=true\n" >> .npmrc
+
+# 2. If npm complains about script permissions, approve the crucial packages
+npm approve-scripts esbuild
+npm approve-scripts fsevents
+
+# 3. Run the installation forcing npm to accept the layout
+npm install --legacy-peer-deps
+
+# 4. Commit your configuration change to git
+git add .npmrc
+git commit -m "Use legacy peer deps for astro-cloudinary on Astro 6"

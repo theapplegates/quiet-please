@@ -1,66 +1,13 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "assets/images/jimmy-chang-unsplash": [
-    50,
-    404,
-    623,
-    810,
-    999,
-    1000
-  ],
-  "assets/images/kseniia-poroshkova-": [
-    50,
-    209,
-    306,
-    386,
-    455,
-    520,
-    577,
-    664,
-    716,
-    770,
-    817,
-    958,
-    993,
-    998,
-    999,
-    1000
-=======
-  "assets/images/rafael-peier-Ody5UtbMvtE-unsplash": [
+  "assets/images/david-becker-TIyafyo4TO0-unsplash": [
     200,
-    692,
-    895,
-    1050,
-    1241,
-    1383,
-    1531,
-    1655,
-    1699,
+    691,
+    1046,
+    1280,
+    1486,
+    1691,
+    1897,
+    1997,
     2000
-  ],
-  "assets/images/douglas-schneiders-UZ2jlHknQpc-unsplash": [
-    200,
-    656,
-    929,
-    1209,
-    1415,
-    1693,
-    1923,
-    1954,
-    2000
->>>>>>> main
-=======
-  "assets/images/milan-malfait-KjSemLmT_yY-unsplash": [
-    200,
-    621,
-    894,
-    1160,
-    1382,
-    1572,
-    1840,
-    1951,
-    2000
->>>>>>> main
   ]
 }

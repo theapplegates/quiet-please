@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 const siteUrl = (
   import.meta.env.SITE_URL ||
   import.meta.env.PUBLIC_SITE_URL ||
-  "https://quiet-please.paulapplegate.com"
+  "https://quiet.paulapplegate.com"
 
 ).replace(/\/$/, "");
 
